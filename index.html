@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- tailwind css link  -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- remix icon link   -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landwind-Landing-Page</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.7),
+          0 0 20px rgba(99, 102, 241, 0.5);
+        /* Initial glow */
+      }
+
+      50% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.9),
+          0 0 40px rgba(99, 102, 241, 0.7);
+        /* Stronger glow */
+      }
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes scale-fade {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-scale-fade {
+      animation: scale-fade 1s ease-out forwards;
+    }
+
+    .logo-slider {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    @keyframes zoomBackground {
+      0% {
+        background-size: 100%;
+      }
+
+      50% {
+        background-size: 120%;
+      }
+
+      100% {
+        background-size: 100%;
+      }
+    }
+
+    .logo-slide-track {
+      animation: scroll 30s linear infinite;
+      display: flex;
+      width: calc(250px * 14);
+    }
+
+    .logo-slide {
+      width: 250px;
+      /* height: 100px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .logo-slide img {
+      padding: 2px !important;
+      max-width: 100%;
+      max-height: 150px;
+      filter: grayscale(0);
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
+
+    .logo-slide:hover img {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-250px * 7));
+      }
+    }
+
+    .logo-slide-track:hover {
+      animation-play-state: paused;
+    }
+
+    #i {
+      mix-blend-mode: color-burn;
+      height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- navigation bar  start -->
+  <nav class="flex justify-between py-4 px-8 sm:px-20">
+    <div class="flex items-center gap-20">
+      <div class="flex items-center gap-2">
+        <img src="./Assets/logo.svg" alt="" />
+        <h1 class="text-3xl font-bold">Landwind</h1>
+      </div>
+      <div class="hidden sm:flex items-center gap-6 text-lg font-semibold">
+        <a href="">Company</a>
+        <a href="">Marketplace</a>
+        <a href="">Features</a>
+        <a href="">Team</a>
+        <a href="">Contact</a>
+      </div>
+    </div>
+    <i id="menu" class="ri-align-right sm:hidden text-4xl"></i>
+    <div class="hidden lg:flex gap-6 items-cente">
+      <button class="font-semibold px-4 py-2 border border-[#6B7280] rounded-xl">
+        Login
+      </button>
+      <button class="bg-[#7E3AF2] font-semibold rounded-xl text-white px-4 py-2">
+        Get Started
+      </button>
+    </div>
+  </nav>
+  <div id="mobileNav" class="bg-[#7E3AF2] py-3 hidden sm:hidden">
+    <div class="flex flex-col text-lg font-semibold gap-4 text-white">
+      <a class="hover:bg-white hover:text-black font-bold py-2 px-4 rounded transition duration-300" href="">Company</a>
+      <a class="hover:bg-white hover:text-black font-bold py-2 px-4 rounded transition duration-300"
+        href="">Marketplace</a>
+      <a class="hover:bg-white hover:text-black font-bold py-2 px-4 rounded transition duration-300"
+        href="">Features</a>
+      <a class="hover:bg-white hover:text-black font-bold py-2 px-4 rounded transition duration-300" href="">Team</a>
+      <a class="hover:bg-white hover:text-black font-bold py-2 px-4 rounded transition duration-300" href="">Contact</a>
+    </div>
+    <div class="flex gap-6 items-cente p-4">
+      <button class="bg-black font-semibold rounded-xl text-white px-4 py-2">
+        Login
+      </button>
+      <button class="bg-white font-semibold rounded-xl px-4 py-2">
+        Get Started
+      </button>
+    </div>
+  </div>
+  <!-- navigation bar  end -->
+  <header class="xl:grid grid-cols-[60%_40%] px-12 sm:px-24 items-center mt-16 sm:mt-40">
+    <div data-aos="fade-up" data-aos-duration="3000" class="flex flex-col justify-center gap-6 sm:gap-8">
+      <h1 class="text-3xl sm:text-5xl md:text-7xl 2xl:text-8xl font-bold">
+        Building digital products & brands.
+      </h1>
+      <p class="text-[#6B7280] sm:text-lg">
+        Here at flowbite we focus on markets where technology, innovation, and
+        capital can unlock long-term value and drive economic growth Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Officiis
+        perspiciatis modi at quo distinctio eos ducimus nulla? Cum cumque ipsa
+        minus ullam amet blanditiis
+      </p>
+
+      <div class="flex gap-6 items-cente">
+        <button class="bg-[#7E3AF2] font-semibold rounded-xl text-white sm:px-4 sm:py-3 p-2">
+          Start 30 day free trial
+        </button>
+        <button class="font-semibold px-4 py-2 border border-[#6B7280] rounded-xl">
+          Pricing & FAQ
+        </button>
+      </div>
+    </div>
+    <div class="mt-6 xl:mt-0">
+      <img class="sm:w-[90%] mx-auto animate-float" src="./Assets/marketing-strategy 1.png" alt="" />
+    </div>
+  </header>
+  <div class="logo-slider">
+    <div class="logo-slide-track">
+      <!-- First set of logos -->
+      <div class="logo-slide">
+        <img src="./Assets/Google.png" alt="IngramSpark" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Microsoft.png" alt="Google Play Books" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Vector.png" alt="Amazon" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Airbnb.png" alt="Hoopla" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Page-1.png" alt="IngramSpark" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Google.png" alt="IngramSpark" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Microsoft.png" alt="Google Play Books" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Vector.png" alt="Amazon" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Airbnb.png" alt="Hoopla" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Page-1.png" alt="IngramSpark" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Google.png" alt="IngramSpark" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Microsoft.png" alt="Google Play Books" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Vector.png" alt="Amazon" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Airbnb.png" alt="Hoopla" />
+      </div>
+      <div class="logo-slide">
+        <img src="./Assets/Page-1.png" alt="IngramSpark" />
+      </div>
+    </div>
+  </div>
+  <section data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
+    class="bg-[#F9FAFB] xl:grid grid-cols-2 px-8 sm:px-24 py-12">
+    <div class="flex flex-col justify-center gap-12">
+      <div class="flex flex-col justify-center gap-6">
+        <h1 class="text-3xl sm:text-5xl font-bold">
+          Work with tools you already use
+        </h1>
+        <p class="text-[#6B7280] sm:text-lg">
+          Deliver great service experiences fast - without the complexity of
+          traditional ITSM solutions.Accelerate critical development work,
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+          officia saepe ea numquam earum sit est. Pariatur, repudiandae!
+          eliminate toil, and deploy changes with ease.
+        </p>
+      </div>
+      <img src="./Assets/Separator.png" alt="" />
+      <div class="flex flex-col justify-center gap-6">
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">
+              Continuous integration and deployment
+            </p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">Development workflow</p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">Knowledge management</p>
+          </li>
+        </ul>
+        <p class="text-[#6B7280] sm:text-lg">
+          Deliver great service experiences fast Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Accusamus, atque minima? - without the
+          complexity of traditional ITSM solutions.
+        </p>
+      </div>
+    </div>
+    <div class="hover:animate-pulse-glow">
+      <img class="w-full mx-auto" src="./Assets/Image.png" alt="" />
+    </div>
+  </section>
+  <section data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
+    class="bg-[#F9FAFB] xl:grid grid-cols-2 px-12 sm:px-24 py-12">
+    <div>
+      <img class="w-full mx-auto hover:animate-pulse-glow" src="./Assets/Image (1).png" alt="" />
+    </div>
+    <div class="flex flex-col justify-center gap-12">
+      <div class="flex flex-col justify-center gap-6">
+        <h1 class="text-3xl sm:text-5xl font-bold">
+          We invest in the world’s potential
+        </h1>
+        <p class="text-[#6B7280] sm:text-lg">
+          Deliver great service experiences fast - without the complexity of
+          traditional ITSM Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Eaque vel recusandae adipisci, impedit inventore quo ipsa
+          laborum? solutions.Accelerate critical development work, eliminate
+          toil, and deploy changes with ease.
+        </p>
+      </div>
+      <img src="./Assets/Separator.png" alt="" />
+      <div class="flex flex-col justify-center gap-6">
+        <ul class="flex flex-col gap-3">
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">
+              Dynamic reports and dashboards
+            </p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">Templates for everyone</p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">Development workflow</p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">
+              Limitless business automation
+            </p>
+          </li>
+          <li class="flex items-center gap-4">
+            <img src="./Assets/Vector (1).png" alt="" />
+            <p class="sm:text-lg font-semibold">Knowledge management</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"
+    class="xl:grid grid-cols-2 px-8 sm:px-24 py-12">
+    <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-3">
+        <p class="text-[#7E3AF2] font-semibold">Trusted Worldwide</p>
+        <h1 class="text-3xl sm:text-5xl font-bold">
+          Trusted by over 600 million users and 10,000 teams
+        </h1>
+        <p class="text-[#6B7280] sm:text-lg">
+          Our rigorous security and compliance standards are at the heart of
+          all we do. We work tirelessly to protect you and your customers.
+        </p>
+      </div>
+      <img src="./Assets/Separator.png" alt="" />
+      <div>
+        <ul class="flex flex-col gap-3 justify-center">
+          <li class="flex items-center gap-3">
+            <p class="text-[#7E3AF2] font-semibold">Explore Legality Guide</p>
+            <img src="./Assets/Vector (2).png" alt="" />
+          </li>
+          <li class="flex items-center gap-3">
+            <p class="text-[#7E3AF2] font-semibold">Visit the Trust Center</p>
+            <img src="./Assets/Vector (2).png" alt="" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-[30%_30%] justify-center items-center gap-6 mt-6">
+      <div class="flex flex-col gap-2">
+        <img class="w-[13%]" src="./Assets/Vector (3).png" alt="" />
+        <h3 class="text-3xl font-bold">99.99% uptime</h3>
+        <p class="sm:text-lg text-[#6B7280]">
+          for Flowbite, with zero maintenance downtime
+        </p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <img class="w-[13%]" src="./Assets/users.png" alt="" />
+        <h3 class="text-3xl font-bold">600M+ Users</h3>
+        <p class="sm:text-lg text-[#6B7280]">
+          trusted by over 600 milion users around the world
+        </p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <img class="w-[13%]" src="./Assets/shopping-cart.png" alt="" />
+        <h3 class="text-3xl font-bold">Millions</h3>
+        <p class="sm:text-lg text-[#6B7280]">of transactions per day</p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <img class="w-[13%]" src="./Assets/Vector (4).png" alt="" />
+        <h3 class="text-3xl font-bold">100+ countries</h3>
+        <p class="sm:text-lg text-[#6B7280]">
+          fhave used Flowbite to create functional websites
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial Slider Container -->
+  <section class="bg-[#F9FAFB] p-4 md:p-12 lg:p-20 flex flex-col items-center">
+    <!-- Testimonial Slider -->
+    <div class="w-full max-w-6xl">
+      <!-- Slider Controls -->
+      <div class="flex justify-between items-center mb-4 md:mb-8">
+        <button id="prev-testimonial" class="text-gray-500 hover:text-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="next-testimonial" class="text-gray-500 hover:text-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Testimonial Slides Container -->
+      <div class="overflow-hidden relative">
+        <div id="testimonials-container" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide w-full flex-shrink-0 flex flex-col items-center gap-2 md:gap-4">
+            <img src="./Assets/Vector (5).png" alt="" class="w-8 md:w-auto" />
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl px-2 sm:px-8 md:px-20 lg:px-60 text-center font-semibold">
+              "Flowbite is just awesome. It contains tons of predesigned
+              components and pages starting from login screen to complex
+              dashboard. Perfect choice for your next SaaS application."
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4">
+              <img src="./Assets/Avatar.png" alt="" class="w-12 h-12 md:w-auto md:h-auto" />
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <p class="font-bold text-base md:text-lg">Micheal Gough</p>
+                <p class="hidden sm:block">/</p>
+                <span class="text-[#6B7280] text-sm md:text-base">CEO at Google</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide w-full flex-shrink-0 flex flex-col items-center gap-2 md:gap-4">
+            <img src="./Assets/Vector (5).png" alt="" class="w-8 md:w-auto" />
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl px-2 sm:px-8 md:px-20 lg:px-60 text-center font-semibold">
+              "The components are well designed and can be easily integrated
+              into our projects. The documentation is comprehensive and the
+              support team is very responsive."
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4">
+              <img id="i" src="./Assets/download.jpg" alt="" class="w-12 h-12 md:w-auto md:h-auto" />
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <p class="font-bold text-base md:text-lg">Sarah Johnson</p>
+                <p class="hidden sm:block">/</p>
+                <span class="text-[#6B7280] text-sm md:text-base">CTO at Facebook</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide w-full flex-shrink-0 flex flex-col items-center gap-2 md:gap-4">
+            <img src="./Assets/Vector (5).png" alt="" class="w-8 md:w-auto" />
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl px-2 sm:px-8 md:px-20 lg:px-60 text-center font-semibold">
+              "Using Flowbite has saved us countless development hours. The
+              pre-built components are clean, customizable, and follow best
+              design practices."
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-4 mt-2 md:mt-4">
+              <img id="i" src="./Assets/th.jpg" alt="" class="w-12 h-12 md:w-auto md:h-auto" />
+              <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <p class="font-bold text-base md:text-lg">David Chen</p>
+                <p class="hidden sm:block">/</p>
+                <span class="text-[#6B7280] text-sm md:text-base">Lead Developer at Microsoft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Indicators -->
+      <div class="flex justify-center gap-2 mt-4 md:mt-8">
+        <button
+          class="testimonial-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-300 hover:bg-gray-500 active-indicator bg-gray-500"></button>
+        <button class="testimonial-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-300 hover:bg-gray-500"></button>
+        <button class="testimonial-indicator w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-300 hover:bg-gray-500"></button>
+      </div>
+    </div>
+  </section>
+  <section data-aos="fade-up" data-aos-duration="3000" class="my-6">
+    <div class="flex flex-col items-center gap-4">
+      <h1 class="text-3xl sm:text-5xl font-bold">Pay as you grow</h1>
+      <p class="text-[#6B7280] text-center text-lg">
+        Here at flowbite we focus on markets where technology, innovation, and
+        capital can unlock <br />long-term value and drive economic growth.
+      </p>
+    </div>
+    <div id="card" class="grid lg:grid-cols-2 xl:grid-cols-[25%_25%_25%] justify-center gap-12 px-24 my-6"></div>
+  </section>
+  <section>
+    <div class="max-w-6xl mx-auto py-12 px-4">
+      <h1 class="text-3xl sm:text-5xl font-bold text-center mb-12">
+        Frequently asked questions
+      </h1>
+
+      <div class="space-y-4">
+        <!-- FAQ Item 1 (Open) -->
+        <div class="border border-gray-200 rounded-md overflow-hidden">
+          <button class="faq-toggle flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            aria-expanded="true">
+            <span class="text-gray-800 font-medium">Can I use FlowBite in open-source projects?</span>
+            <svg class="w-5 h-5 text-gray-500 transform rotate-180 transition-transform duration-300" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out px-6">
+            <div class="pb-4">
+              <p class="text-gray-600 mb-3">
+                Generally, it is accepted to use FlowBite in open-source
+                projects, as long as it is not a UI library, a theme, a
+                template, a page-builder that would be considered as an
+                alternative to FlowBite itself.
+              </p>
+              <p class="text-gray-600 mb-3">
+                With that being said, feel free to use this design kit for
+                your open-source projects.
+              </p>
+              <p class="text-gray-600">
+                Find out more information by
+                <a href="#" class="text-purple-600 hover:underline">reading the license</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 (Closed) -->
+        <div class="border border-gray-200 rounded-md overflow-hidden">
+          <button class="faq-toggle flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            aria-expanded="false">
+            <span class="text-gray-800 font-medium">Where can I access my download files?</span>
+            <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content hidden h-0 transition-all duration-300 ease-in-out px-6">
+            <div class="pb-4">
+              <p class="text-gray-600">
+                Your download files can be accessed from your account
+                dashboard. After logging in, navigate to the "Downloads"
+                section where all your purchased files will be listed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 (Closed) -->
+        <div class="border border-gray-200 rounded-md overflow-hidden">
+          <button class="faq-toggle flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            aria-expanded="false">
+            <span class="text-gray-800 font-medium">Can I use FlowBite for commercial purposes?</span>
+            <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content hidden h-0 transition-all duration-300 ease-in-out px-6">
+            <div class="pb-4">
+              <p class="text-gray-600">
+                Yes, FlowBite can be used for commercial purposes depending on
+                the license you purchase. Please refer to our licensing
+                options for more details.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 (Closed) -->
+        <div class="border border-gray-200 rounded-md overflow-hidden">
+          <button class="faq-toggle flex justify-between items-center w-full px-6 py-4 text-left focus:outline-none"
+            aria-expanded="false">
+            <span class="text-gray-800 font-medium">What about browser support?</span>
+            <svg class="w-5 h-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-content hidden h-0 transition-all duration-300 ease-in-out px-6">
+            <div class="pb-4">
+              <p class="text-gray-600">
+                FlowBite is compatible with all modern browsers including
+                Chrome, Firefox, Safari, and Edge. We recommend using the
+                latest version of these browsers for the best experience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-[#F9FAFB] flex flex-col gap-6 items-center justify-center py-20">
+    <h1 class="text-3xl sm:text-5xl font-bold text-center">
+      Start your free trial today
+    </h1>
+    <p class="text-[#6B7280] text-center">
+      Try Flowbite Platform for 30 days. No credit card required.
+    </p>
+    <button class="bg-[#7E3AF2] font-semibold rounded-xl text-white sm:px-4 sm:py-3 p-2">
+      Start 30 day free trial
+    </button>
+  </section>
+  <footer data-aos="fade-up" data-aos-anchor-placement="top-bottom"
+    class="grid grid-cols-2 gap-6 sm:grid-cols-3 px-12 sm:gap-4 md:grid-cols-[20%_20%_20%_20%_10%] justify-center text-semibold py-8">
+    <div class="flex flex-col gap-6">
+      <h2 class="text-xl font-bold">COMPANY</h2>
+      <p>About</p>
+      <p>Premium</p>
+      <p>Blog</p>
+      <p>Affiliate Program</p>
+      <p>Get Coupon</p>
+    </div>
+    <div class="flex flex-col gap-6">
+      <h2 class="text-xl font-bold">Help and support</h2>
+      <p>Contact Us</p>
+      <p>Knowledge Center</p>
+      <p>Premium Support</p>
+      <p>Sponsorships</p>
+    </div>
+    <div class="flex flex-col gap-6">
+      <h2 class="text-xl font-bold">Learning</h2>
+      <p>Learn Hub</p>
+      <p>Manuals</p>
+      <p>Tutorials</p>
+      <p>Communities</p>
+    </div>
+    <div class="flex flex-col gap-6">
+      <h2 class="text-xl font-bold">RESOURCES</h2>
+      <p>Third-Party Tools</p>
+      <p>Illustrations</p>
+      <p>Themesberg</p>
+      <p>Bluehost</p>
+      <p>Stock Photos</p>
+    </div>
+    <div class="hidden sm:flex flex-col gap-6">
+      <h2 class="text-xl font-bold">LEGAL</h2>
+      <p>Privacy Policy</p>
+      <p>Terms & Conditions</p>
+      <p>EULA</p>
+    </div>
+  </footer>
+  <div class="flex flex-col gap-6 items-center">
+    <div class="flex items-center gap-2">
+      <img src="./Assets/logo.svg" alt="" />
+      <h1 class="text-4xl font-bold">Landwind</h1>
+    </div>
+    <p class="text-[#6B7280] text-lg text-center">
+      © 2025 Umer jamil, Inc. All rights reserved.
+    </p>
+    <div class="flex items-center gap-8">
+      <i class="ri-facebook-circle-line text-2xl hover:text-[#7E3AF2]"></i><i
+        class="ri-instagram-line text-2xl hover:text-[#7E3AF2]"></i><i
+        class="ri-youtube-line text-2xl hover:text-[#7E3AF2]"></i><i
+        class="ri-twitter-x-line text-2xl hover:text-[#7E3AF2]"></i>
+    </div>
+  </div>
+  <script>
+    let menu = document.getElementById("menu");
+    let mobileNav = document.getElementById("mobileNav");
+    menu.addEventListener("click", () => {
+      if (mobileNav.classList.contains("hidden")) {
+        mobileNav.classList.remove("hidden");
+      } else {
+        mobileNav.classList.add("hidden");
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const testimonialContainer = document.getElementById(
+        "testimonials-container"
+      );
+      const testimonialSlides =
+        document.querySelectorAll(".testimonial-slide");
+      const prevButton = document.getElementById("prev-testimonial");
+      const nextButton = document.getElementById("next-testimonial");
+      const indicators = document.querySelectorAll(".testimonial-indicator");
+
+      let currentIndex = 0;
+      const slideCount = testimonialSlides.length;
+
+      // Initialize slider
+      updateSliderPosition();
+
+      // Event listeners for controls
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSliderPosition();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSliderPosition();
+      });
+
+      // Set up indicators
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          currentIndex = index;
+          updateSliderPosition();
+        });
+      });
+
+      // Function to update slider position
+      function updateSliderPosition() {
+        const slideWidth = testimonialSlides[0].clientWidth;
+        testimonialContainer.style.transform = `translateX(-${currentIndex * slideWidth
+          }px)`;
+
+        // Update active indicator
+        indicators.forEach((indicator, index) => {
+          if (index === currentIndex) {
+            indicator.classList.add("bg-gray-500");
+            indicator.classList.remove("bg-gray-300");
+          } else {
+            indicator.classList.add("bg-gray-300");
+            indicator.classList.remove("bg-gray-500");
+          }
+        });
+      }
+
+      // Auto slide functionality
+      let autoSlideInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSliderPosition();
+      }, 5000);
+
+      // Pause auto slide on hover
+      testimonialContainer.addEventListener("mouseenter", () => {
+        clearInterval(autoSlideInterval);
+      });
+
+      testimonialContainer.addEventListener("mouseleave", () => {
+        autoSlideInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % slideCount;
+          updateSliderPosition();
+        }, 5000);
+      });
+
+      // Update slider position when window resizes
+      window.addEventListener("resize", updateSliderPosition);
+    });
+    let data = [
+      {
+        heading: "Starter",
+        price: "$49",
+        list: "Great for personal use and for your side projects.",
+        one: "1 developer",
+        two: "6 months",
+      },
+      {
+        heading: "Company",
+        price: "$99",
+        list: "Best for large scale uses and extended redistribution rights.",
+        one: "10 developers",
+        two: "24 months",
+      },
+      {
+        heading: "Enterprise",
+        price: "$499",
+        list: "Best for large scale uses and extended redistribution rights.",
+        one: "100+ developers",
+        two: "36 months",
+      },
+    ];
+    data.map((val, i) => {
+      document.getElementById(
+        "card"
+      ).innerHTML += ` <div class="border border-gray-600 rounded-xl shadow-2xl py-8 flex flex-col gap-8 items-center 
+            px-8 sm:px-6 md:px-8 lg:px-10 xl:px-12"> <!-- Responsive padding -->
+  <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold">${val.heading}</h1> <!-- Responsive font size -->
+  <p class="text-sm sm:text-base text-[#6B7280] text-center">${val.list}</p> <!-- Responsive font size -->
+  <p class="text-base sm:text-lg text-[#6B7280]"> <!-- Responsive font size -->
+    <span class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black font-bold">${val.price}</span>/month
+  </p>
+  <ul class="text-base sm:text-lg md:text-xl flex flex-col gap-4 sm:gap-6 md:gap-8"> <!-- Responsive font size and gap -->
+    <li class="flex items-center gap-2 sm:gap-3"> <!-- Responsive gap -->
+      <img src="./Assets/Vector (6).png" alt="" class="w-4 h-4 sm:w-5 sm:h-5"> <!-- Responsive image size -->
+      <p>Individual configuration</p>
+    </li>
+    <li class="flex items-center gap-2 sm:gap-3">
+      <img src="./Assets/Vector (6).png" alt="" class="w-4 h-4 sm:w-5 sm:h-5">
+      <p>No setup, monthly, or hidden fees</p>
+    </li>
+    <li class="flex items-center gap-2 sm:gap-3">
+      <img src="./Assets/Vector (6).png" alt="" class="w-4 h-4 sm:w-5 sm:h-5">
+      <p>Team size: <strong>${val.one}</strong></p>
+    </li>
+    <li class="flex items-center gap-2 sm:gap-3">
+      <img src="./Assets/Vector (6).png" alt="" class="w-4 h-4 sm:w-5 sm:h-5">
+      <p>Premium support: <strong>${val.two}</strong></p>
+    </li>
+    <li class="flex items-center gap-2 sm:gap-3">
+      <img src="./Assets/Vector (6).png" alt="" class="w-4 h-4 sm:w-5 sm:h-5">
+      <p>Free updates: <strong>${val.two}</strong></p>
+    </li>
+  </ul>
+  <button class="bg-[#7E3AF2] font-bold py-3 px-8 sm:py-4 sm:px-12 md:py-4 md:px-16 lg:py-4 lg:px-24 text-white rounded-xl 
+                 text-sm sm:text-base md:text-lg hover:bg-[#6C2BD9] transition-colors duration-300"> <!-- Responsive padding and font size -->
+    Get started
+  </button>
+</div>`;
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggles = document.querySelectorAll(".faq-toggle");
+
+      // Set initial state for the first item (open)
+      const firstContent = toggles[0].nextElementSibling;
+      firstContent.classList.remove("hidden");
+      firstContent.classList.remove("h-0");
+
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const content = toggle.nextElementSibling;
+          const icon = toggle.querySelector("svg");
+          const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+
+          // Toggle aria-expanded attribute
+          toggle.setAttribute("aria-expanded", !isExpanded);
+
+          // Toggle icon rotation
+          if (isExpanded) {
+            icon.classList.remove("rotate-180");
+          } else {
+            icon.classList.add("rotate-180");
+          }
+
+          // Toggle content visibility with animation
+          if (isExpanded) {
+            // Close the accordion
+            content.style.height = content.scrollHeight + "px";
+            setTimeout(() => {
+              content.style.height = "0px";
+              setTimeout(() => {
+                content.classList.add("hidden");
+              }, 300);
+            }, 10);
+          } else {
+            // Open the accordion
+            content.classList.remove("hidden");
+            content.style.height = "0px";
+            setTimeout(() => {
+              content.style.height = content.scrollHeight + "px";
+              setTimeout(() => {
+                content.style.height = "";
+              }, 9000000);
+            }, 10);
+          }
+        });
+      });
+    });
+  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>
